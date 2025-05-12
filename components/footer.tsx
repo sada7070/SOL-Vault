@@ -1,4 +1,4 @@
-import { BrainCog } from "lucide-react";
+import { Box } from "lucide-react";
 import Link from "next/link";
 
 type NavItem = {
@@ -17,7 +17,7 @@ export function Footer({ navItems }: FooterProps) {
         <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
           
           <div className="flex items-center gap-2 font-bold text-xl">
-            <BrainCog className="h-6 w-6 text-primary" />
+            <Box className="mt-1 h-6 w-6 text-primary" />
             <Link href="/">
               <span>SOL Vault</span>
             </Link>
