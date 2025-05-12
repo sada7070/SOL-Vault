@@ -20,7 +20,7 @@ export function Mnemonic() {
   const [currentIndex, setCurrentindex] = useState(0);
   const [wallets, setWallets] = useState<Wallet[]>([]);
 
-  const createWallet = () => {
+  const createWallet = async () => {
     const seed = mnemonicToSeedSync(mnemonic);
     const path = `m/44'/501'/${currentIndex}'/0'`;
     const derivedSeed = derivePath(path, seed.toString("hex")).key;
@@ -62,7 +62,7 @@ export function Mnemonic() {
   };
 
   return <div className="mx-2 pt-4">
-    <p className="text-3xl font-medium">Create your Solana Wallet today!!</p>
+    <p className="text-3xl font-medium">Create your Solana Wallet today !!</p>
     <div className="flex gap-4 my-6">
         {!mnemonic && wallets.length === 0 && (
             <Button size='lg' onClick={async () => {
@@ -76,7 +76,6 @@ export function Mnemonic() {
             </Button>
         )}
     </div>
-
 
       {mnemonic && (
         <div className="border-2 p-6 rounded-xl dark:bg-black dark:text-white bg-white text-black">
@@ -122,6 +121,7 @@ export function Mnemonic() {
                     <Trash2 size={18} />
                   </Button>
                 </div>
+
                 <div className="bg-slate-300 dark:bg-neutral-900 p-4 rounded-lg">
                   <div onClick={() => {
                     navigator.clipboard.writeText(wallet.publicKey)
@@ -130,19 +130,20 @@ export function Mnemonic() {
                     <p className="text-sm text-black dark:text-gray-400 font-semibold mb-1">Public Key</p>
                     <p className="break-all truncate">{wallet.publicKey}</p>
                   </div>
+
                  <div className="flex items-center justify-between gap-2 mt-4">
                     <div onClick={() => {
                         navigator.clipboard.writeText(wallet.privateKey);
                         toast("Private key copied to the clipboard ", {
                             description: "Dont share it with anyone, Keep it safe"
-                });
+                        });
                     }} className="flex-1 min-w-0 cursor-pointer">
-                        <p className="text-sm text-black dark:text-gray-400 font-semibold mb-1">
+                      <p className="text-sm text-black dark:text-gray-400 font-semibold mb-1">
                         Private Key
-                        </p>
-                        <p className="font-mono truncate overflow-hidden whitespace-nowrap text-ellipsis text-black dark:text-white">
+                      </p>
+                      <p className="font-mono truncate overflow-hidden whitespace-nowrap text-ellipsis text-black dark:text-white">
                         {wallet.showPrivateKey ? wallet.privateKey : "•".repeat(44)}
-                        </p>
+                      </p>
                     </div>
 
                     <Button

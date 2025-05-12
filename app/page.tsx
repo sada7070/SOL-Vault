@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { Mnemonic } from "@/components/mnemonic";
 import { Navbar } from "@/components/navbar";
 
