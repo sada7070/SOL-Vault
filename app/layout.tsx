@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "SOL Vault",
+  icons: {
+    icon: "/box.svg"
+  },
   description: "Solana wallet",
 };
 
